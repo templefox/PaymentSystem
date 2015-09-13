@@ -1,32 +1,31 @@
 package ds.payment.transaction
 
 import ds.payment.classificaiton.HourlyClassification
-import ds.payment.classificaiton.PaymentClassification;
+import ds.payment.classificaiton.PaymentClassification
 import ds.payment.paymentmethod.HoldMethod
-import ds.payment.paymentmethod.PaymentMethod;
-import ds.payment.schedule.MonthlySechedule
-import ds.payment.schedule.PaymentSchedule;
+import ds.payment.paymentmethod.PaymentMethod
+import ds.payment.schedule.PaymentSchedule
+import ds.payment.schedule.WeeklySchedule
+import groovy.transform.TupleConstructor
+;
 
+@TupleConstructor(includeSuperProperties = true)
 class AddHourlyEmployeeTransaction extends AddEmployeeTransaction {
 	float salary;
-	
-	AddHourlyEmployeeTransaction(int id,String name,String address,float salary){
-		super(id,name,address);
-		this.salary = salary;	
-	}
+
 	
 	@Override
-	protected PaymentMethod GetPaymentMethod() {
+	protected PaymentMethod getPaymentMethod() {
 		new HoldMethod();
 	}
 
 	@Override
-	protected PaymentSchedule GetSchedule() {
-		new MonthlySechedule();
+	protected PaymentSchedule getSchedule() {
+		new WeeklySchedule();
 	}
 
 	@Override
-	protected PaymentClassification GetClassification() {
-		new HourlyClassification()
+	protected PaymentClassification getClassification() {
+		new HourlyClassification(salary)
 	}
 }

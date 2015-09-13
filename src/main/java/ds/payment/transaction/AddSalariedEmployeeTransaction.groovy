@@ -1,38 +1,29 @@
 package ds.payment.transaction
 
-import java.security.PublicKey
-import org.springframework.context.ApplicationContext
-
-import ds.payment.SpringContext
-import ds.payment.classificaiton.PaymentClassification;
+import ds.payment.classificaiton.PaymentClassification
 import ds.payment.classificaiton.SalariedClassification
-import ds.payment.database.DB
-import ds.payment.model.Employee;
 import ds.payment.paymentmethod.HoldMethod
-import ds.payment.paymentmethod.PaymentMethod;
-import ds.payment.schedule.MonthlySechedule
-import ds.payment.schedule.PaymentSchedule;
+import ds.payment.paymentmethod.PaymentMethod
+import ds.payment.schedule.MonthlySchedule
+import ds.payment.schedule.PaymentSchedule
+import groovy.transform.TupleConstructor
 
+@TupleConstructor(includeSuperProperties = true)
 class AddSalariedEmployeeTransaction extends AddEmployeeTransaction {
 	float salary;
-	
-	public AddSalariedEmployeeTransaction(int id,String name,String address,float salary){
-		super(id,name,address)
-		this.salary = salary;
-	}
 
 	@Override
-	protected PaymentMethod GetPaymentMethod() {
+	protected PaymentMethod getPaymentMethod() {
 		new HoldMethod()
 	}
 
 	@Override
-	protected PaymentSchedule GetSchedule() {
-		new MonthlySechedule();
+	protected PaymentSchedule getSchedule() {
+		new MonthlySchedule();
 	}
 
 	@Override
-	protected PaymentClassification GetClassification() {
+	protected PaymentClassification getClassification() {
 		new SalariedClassification(salary);
 	}
 }

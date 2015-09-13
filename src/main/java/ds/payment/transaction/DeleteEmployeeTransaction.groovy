@@ -1,15 +1,13 @@
 package ds.payment.transaction
 
+import ds.payment.SpringContext
 import ds.payment.database.DB
-import ds.payment.SpringContext;
+import groovy.transform.TupleConstructor
 import org.springframework.context.ApplicationContext
 
+@TupleConstructor
 class DeleteEmployeeTransaction implements Transaction {
 	int id;
-	
-	DeleteEmployeeTransaction(int id){
-		this.id = id
-	}
 	
 	@Override
 	public void execute() {
