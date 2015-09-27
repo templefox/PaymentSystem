@@ -14,7 +14,7 @@ import org.springframework.context.ApplicationContext
 @TupleConstructor(includeSuperProperties = true)
 class ChangeMemberTransaction extends ChangeAffiliationTransaction {
     int memberId
-    int fee
+    float fee
 
     @Override
     protected void recordMembership(Employee employee) {

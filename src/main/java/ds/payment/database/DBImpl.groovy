@@ -50,4 +50,9 @@ class DBImpl implements DB{
 	void deleteUnionMember(int memberId) {
 		affiliationMap.remove(memberId)
 	}
+
+	@Override
+	List<Employee> getAllEmployees() {
+		employees.values().collect { it.copy() }
+	}
 }

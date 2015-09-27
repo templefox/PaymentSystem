@@ -13,5 +13,6 @@ interface DB {
 
 	void deleteUnionMember(int memberId)
 
+	List<Employee> getAllEmployees()
 	Employee getAffiliationMember(int memberId)
 }

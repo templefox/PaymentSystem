@@ -115,8 +115,8 @@ class PayrollTest extends Specification{
 
 		where:
 		id | name     | address  | salary | amount | commissionRate | date
-		1  | "Jason"  | "home"   | 120.00 | 100    | 0.2            | new Date()
-		2  | "Homers" | "office" | 230.43 | 200    | 0.3            | new Date().parse('yyyy/MM/dd', '1973/07/09')
+		15 | "Jason"  | "home"   | 120.00 | 100 | 0.2 | new Date()
+		16 | "Homers" | "office" | 230.43 | 200 | 0.3 | new Date().parse('yyyy/MM/dd', '1973/07/09')
 	}
 
 	def "TestAddServiceCharge"() {
